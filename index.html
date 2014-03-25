@@ -1,0 +1,76 @@
+<html>
+	<head>
+		<style>
+		.container{
+			position: absolute;
+			top: 0px;
+			bottom: 0px;
+			right: 0px;
+			left: 0px;
+			background-color: grey;
+		}
+		#todoapp{
+			margin: auto;
+			width: 25%;
+			border: 1px solid white;
+			background-color: #ccc;
+		}
+		#header{
+		}
+		.head{
+			background-color: brown;
+			text-align: center;
+		}
+		#new-todo{
+			width: 100%;
+		}
+		.todo{
+			width: 100%;
+		}
+		#todo-list{
+			width: 100%;
+		}
+		li{
+			list-style-type: none;
+		}
+		ul{
+			padding-left: 0px;
+		}
+		label{
+			width: 75%;
+			display: inline-block;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<section id="todoapp">
+			<header id="header">
+				<h1 class="head">TO DOs</h1>
+				<input id="new-todo" autofocus autocomplete="off" placeholder="What needs to be done?" v-model="newTodo" v-on="keyup:addTodo | key enter">
+			</header>
+			<section id="main">
+				<ul id="todo-list">
+					<li class="todo" v-repeat="todos">
+						<div class="view">
+							<input v-model="done" class="toggle" type="checkbox">
+							<label v-text="content"></label>
+							<button class="destroy" v-on="click:removeTodo(this)">Remove</button>
+						</div>
+					</li>
+				</ul>
+			</section>
+			<footer id="footer">
+				<span id="todo-count">
+					<strong v-text="todos.length"></strong> items left
+				</span>
+				<button id="clear-completed" style="display: none;">
+					Clear completed (0)
+				</button>
+			</footer>
+		</section>	
+		</div>
+		<script src="vue.js"></script>
+		<script src="script.js"></script>
+	</body>
+</html>
